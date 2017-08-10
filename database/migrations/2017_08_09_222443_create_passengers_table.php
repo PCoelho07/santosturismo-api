@@ -13,9 +13,15 @@ class CreatePassengersTable extends Migration
      */
     public function up()
     {
-        Schema::create('passengers', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('tb_passengers', function (Blueprint $table) {
+            $table->increments('id_passengers');
+            $table->integer('people_id')->unsigned();
             $table->timestamps();
+
+            $table->foreign('people_id')
+                    ->references('id_people')
+                    ->on('tb_people')
+                    ->onDelete('cascade');
         });
     }
 
@@ -26,6 +32,6 @@ class CreatePassengersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('passengers');
+        Schema::dropIfExists('tb_passengers');
     }
 }

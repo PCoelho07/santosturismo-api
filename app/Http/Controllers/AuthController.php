@@ -25,8 +25,8 @@ class AuthController extends Controller
     	]);
     }
 
-    public function register(Request $request)
-    {
+    public function register(Request $request) {
+
         $user = $this->user->create([
             'name' => $request->get('name'),
             'email' => $request->get('email'),
@@ -41,8 +41,8 @@ class AuthController extends Controller
     }
 
 
-   public function signin(Request $request)
-    {
+   	public function signin(Request $request) {
+
         $credentials = $request->only('email', 'password');
         $access_token = null;
 
@@ -67,8 +67,8 @@ class AuthController extends Controller
         );
     }
 
-    public function getAuthUser(Request $request)
-    {
+    public function getAuthUser(Request $request) {
+    	
         $user = JWTAuth::toUser($request->access_token);
         return response()->json(['result' => $user]);
     }
