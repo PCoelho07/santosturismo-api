@@ -28,9 +28,9 @@ class AuthController extends Controller
     public function register(Request $request) {
 
         $user = $this->user->create([
-            'name' => $request->get('name'),
-            'email' => $request->get('email'),
-            'password' => bcrypt($request->get('password'))
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'password' => bcrypt($request->input('password'))
         ]);
 
         return response()->json([
