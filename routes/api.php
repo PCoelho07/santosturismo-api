@@ -18,6 +18,14 @@ Route::middleware(['jwt.auth'])->group(function() {
 	
 	Route::post('/', 'AuthController@index');
 	
+	/* Passengers */
+	Route::prefix('passengers')->group( function () {
+
+		Route::get('/', 'PassengerController@allPassengers');
+		Route::get('/{id}', 'PassengerController@passengersById');
+
+	});
+	
 });
 
 Route::post('/register', 'AuthController@register');
