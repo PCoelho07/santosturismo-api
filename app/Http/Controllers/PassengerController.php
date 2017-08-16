@@ -19,14 +19,14 @@ class PassengerController extends Controller
 		
 		$this->passenger = Passenger::all();
 
-		return $this->passenger->toJson();
+		return response()->json($this->passenger);
 	}
 
 	public function passengersById($id) {
 		
 		$this->passenger = Passenger::find($id);
 
-		return $this->passenger->toJson();		
+		return response()->json($this->passenger);
 	}
 
 

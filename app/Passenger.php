@@ -10,14 +10,14 @@ class Passenger extends Model
 
 	protected $primaryKey = 'id_passengers';
 
-	protected $fillable = ['city_destination', 'city_origin', 'partners_count', 'trip_count'];
+	protected $fillable = ['city_destination', 'city_origin', 'partners_count', 'trip_count', 'created_at', 'updated_at'];
 
-	protected $guarded = ['id_passengers', 'people_id', 'created_at', 'updated_at'];
+	protected $guarded = ['id_passengers', 'people_id'];
 
 
 	public function people() {
 
-		return $this->hasOne('App\People');
+		return $this->belongsTo('App\People', 'people_id');
 
 	}
 }

@@ -22,3 +22,30 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+
+/* Person factory */
+$factory->define(App\Person::class, function (Faker\Generator $faker) {
+	return [
+		'name' => $faker->name,
+		'cpf' => $faker->postcode,
+		'rg' => $faker->postcode,
+		'date' => $faker->datetime(),
+	];
+});
+
+
+/*  Passenger factory   */
+$factory->define(App\Passenger::class, function (Faker\Generator $faker) {
+
+	return [
+			'people_id' => 	factory(App\Person::class)->create()->id_people,
+			'city_destination' => $faker->city, 
+			'city_origin' => $faker->city, 
+			'partners_count' => rand(),
+			'trip_count' => rand(),
+	];
+
+
+});
+
