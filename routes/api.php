@@ -23,6 +23,8 @@ Route::middleware(['jwt.auth'])->group(function() {
 
 		Route::post('/', 'PassengerController@allPassengers');
 		Route::post('/{id}', 'PassengerController@passengersById');
+		Route::post('/details/{id}', 'PassengerController@passengersByIdWithDetails');
+		Route::post('/custom/{att}/{column}', 'PassengerController@passengersBy');
 
 	});
 	

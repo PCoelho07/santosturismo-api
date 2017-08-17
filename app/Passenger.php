@@ -15,9 +15,9 @@ class Passenger extends Model
 	protected $guarded = ['id_passengers', 'people_id'];
 
 
-	public function people() {
+	public function personalData() {
 
-		return $this->belongsTo('App\People', 'people_id');
+		return $this->belongsTo('App\Person', 'people_id');
 
 	}
 }

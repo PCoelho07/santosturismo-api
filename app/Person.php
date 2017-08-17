@@ -10,7 +10,7 @@ class Person extends Model
 
     protected $primaryKey = 'id_people';
 
-    protected $fillable = ['name', 'cpf', 'rg', 'date', 'created_at', 'updated_at'];
+    protected $fillable = ['name', 'cpf', 'rg', 'date', 'email', 'created_at', 'updated_at'];
 
     protected $guarded = ['id_people'];
 }
