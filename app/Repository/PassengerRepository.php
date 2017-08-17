@@ -31,7 +31,7 @@ class PassengerRepository implements PassengerRepositoryInterface
     	return $this->passenger->where($att, $column)->first();
     }
 
-    public function findDetailsByPassenger($id)
+    public function findDetailsByPassenger($id)	
     {
     	return $this->passenger->with('personalData')
     							->where('id_passengers', $id)
