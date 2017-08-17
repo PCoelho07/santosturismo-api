@@ -15,8 +15,6 @@ class AddColumnsToTbPassengers extends Migration
     {
         Schema::table('tb_passengers', function(Blueprint $table) {
 
-            $table->integer('city_destination')->unique();
-            $table->integer('city_origin')->unique();
             $table->integer('partners_count')->nullable();
             $table->integer('trip_count')->nullable();
 
@@ -32,10 +30,8 @@ class AddColumnsToTbPassengers extends Migration
     public function down()
     {
         Schema::table('tb_passengers', function(Blueprint $table) {
-            $table->dropColumn('city_destination');
-            $table->dropColumn('city_origin');
-            $table->dropColumn('trip_count');           
             $table->dropColumn('partners_count');
+            $table->dropColumn('trip_count');           
 
         });
     }

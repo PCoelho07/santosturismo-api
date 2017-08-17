@@ -3,9 +3,9 @@
 namespace App\Repository;
 
 use App\Passenger;
-use App\Repository\Contract\PassengerRepositoryInterface;
+use App\Repository\Contract\BaseRepositoryInterface;
 
-class PassengerRepository implements PassengerRepositoryInterface
+class PassengerRepository implements BaseRepositoryInterface
 {
    	
    	protected $passenger;
@@ -18,29 +18,34 @@ class PassengerRepository implements PassengerRepositoryInterface
 
     public function findAll()
     {
-    	return $this->passenger->with('personalData')->first();
+    	return $this->passenger->with(['personalData', 'tripData'])
+                               ->get();
     }
 
     public function findById($id)
     {
-    	return $this->passenger->find($id);
+    	$data = $this->passenger->find($id);
+
+        if( $data )
+        {
+            return $data->with(['personalData', 'tripData'])
+                        ->first();
+        }
+
+        return false;
+
     }
 
     public function findBy($att, $column)
     {
-    	return $this->passenger->where($att, $column)->first();
+    	return $this->passenger->with(['personalData', 'tripData'])
+                               ->where($att, $column)
+                               ->first();
     }
 
-    public function findDetailsByPassenger($id)	
+    public function create(array $data = null)
     {
-    	return $this->passenger->with('personalData')
-    							->where('id_passengers', $id)
-    							->first();
-    }
-
-    public function createPassenger(array $data)
-    {
-    	// To DO
+    	
 
     	return true;
     }

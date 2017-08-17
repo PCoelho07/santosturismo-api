@@ -6,7 +6,7 @@ namespace App\Repository\Contract;
 /**
 * 
 */
-interface PassengerRepositoryInterface
+interface BaseRepositoryInterface
 {
 	
 	public function findAll();
@@ -14,5 +14,7 @@ interface PassengerRepositoryInterface
 	public function findById($id);
 
 	public function findBy($att, $column);
+
+	public function create(array $data);
 	
 }

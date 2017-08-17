@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AlterColumnToTbPassengers extends Migration
+class DropColumnsCityFromTbPassengers extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class AlterColumnToTbPassengers extends Migration
      */
     public function up()
     {
-        Schema::table('tb_passengers', function (Blueprint $table) {
-            $table->string('city_destination')->change();
-            $table->string('city_origin')->change();
+        Schema::table('tb_passengers', function(Blueprint $table) {
+            $table->dropColumn('city_destination');
+            $table->dropColumn('city_origin');
         });
     }
 

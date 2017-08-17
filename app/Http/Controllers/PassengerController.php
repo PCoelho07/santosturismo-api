@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Repository\Contract\PassengerRepositoryInterface;
+use App\Repository\PassengerRepository;
 
 class PassengerController extends Controller
 {
 	private $passengerRepository;
 
-	public function __construct(PassengerRepositoryInterface $passengerRepository) 
+	public function __construct(PassengerRepository $passengerRepository) 
 	{
 		$this->passengerRepository = $passengerRepository;
 	}

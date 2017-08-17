@@ -31,6 +31,7 @@ $factory->define(App\Person::class, function (Faker\Generator $faker) {
 		'cpf' => $faker->postcode,
 		'rg' => $faker->postcode,
 		'date' => $faker->datetime(),
+		'email' => $faker->unique()->safeEmail
 	];
 });
 
@@ -40,12 +41,23 @@ $factory->define(App\Passenger::class, function (Faker\Generator $faker) {
 
 	return [
 			'people_id' => 	factory(App\Person::class)->create()->id_people,
-			'city_destination' => $faker->city, 
-			'city_origin' => $faker->city, 
-			'partners_count' => rand(),
-			'trip_count' => rand(),
+			'partners_count' => (rand() % 2),
+			'trip_id' => factory(App\Trip::class)->create()->id_trips
 	];
 
 
 });
 
+/*  Trip factory   */
+$factory->define(App\Trip::class, function (Faker\Generator $faker) {
+
+	return [
+		'exit_date' => $faker->datetime(), 
+		'arrival_date' => $faker->datetime(), 
+		'passengers_qtt' => (rand() % 47), 
+		'city_destination' => $faker->city, 
+		'city_origin'  => $faker->city,
+	];
+
+
+});

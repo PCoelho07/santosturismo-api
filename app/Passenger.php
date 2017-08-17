@@ -20,4 +20,8 @@ class Passenger extends Model
 		return $this->belongsTo('App\Person', 'people_id');
 
 	}
+
+	public function tripData() {
+		return $this->belongsTo('App\Trip', 'trip_id');
+	}
 }
