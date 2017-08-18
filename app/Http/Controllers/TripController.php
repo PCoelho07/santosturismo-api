@@ -8,6 +8,9 @@ use App\Repository\TripRepository;
 
 class TripController extends Controller
 {
+
+    use TraitErrorResponse;
+
 	private $tripRepository;
     
     public function __construct(TripRepository $tripRepository)
@@ -20,9 +23,9 @@ class TripController extends Controller
     {
     	$data = $this->tripRepository->findAll();
 
-    	if (! $data) {
-    		return response()->json(['error' => 'Trip not found'], 400);
-    	}
+    	if (! $data)
+    		return $this->errorResponse400();
+    
 
     	return $data;
     }
@@ -32,9 +35,9 @@ class TripController extends Controller
     {
     	$data = $this->tripRepository->findById($id);
 
-    	if(! $data) {
-    		return response()->json(['error' => 'Trip not found'], 400);	
-    	}
+    	if(! $data)
+    		return $this->errorResponse400();
+    
 
     	return $data;
     }
@@ -43,9 +46,9 @@ class TripController extends Controller
     {
     	$data = $this->tripRepository->findBy($att, $column);
 
-    	if(! $data) {
-    		return response()->json(['error' => 'Trip not found'], 400);		
-    	}
+    	if(! $data)
+    		return $this->errorResponse400();		
+    
 
     	return $data;
     }

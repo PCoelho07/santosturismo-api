@@ -14,7 +14,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware(['jwt.auth'])->group(function() { 
+// Route::middleware(['jwt.auth'])->group(function() { 
 	
 	Route::post('/', 'AuthController@index');
 	
@@ -36,7 +36,7 @@ Route::middleware(['jwt.auth'])->group(function() {
 
 	});
 	
-});
+// });
 
 Route::post('/register', 'AuthController@register');
 

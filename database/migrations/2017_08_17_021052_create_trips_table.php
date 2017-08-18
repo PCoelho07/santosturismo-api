@@ -18,8 +18,8 @@ class CreateTripsTable extends Migration
             $table->datetime('exit_date');
             $table->datetime('arrival_date');
             $table->integer('passengers_qtt');
-            $table->integer('city_destination')->unique();
-            $table->integer('city_origin')->unique();
+            $table->integer('city_destination')->unsigned();
+            $table->integer('city_origin')->unsigned();
             $table->timestamps();
         });
     }
